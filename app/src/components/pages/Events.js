@@ -1,4 +1,4 @@
-import eventService from '../services/EventServices'
+import eventService from '.../services/EventServices'
 
 const Events = () => {
     const handleClick = () => {
