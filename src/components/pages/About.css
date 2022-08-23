@@ -1,0 +1,19 @@
+.main {
+    padding: 5% 8% 8% 8%;
+}
+
+.header {
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgb(134, 115, 69);
+    width: fit-content;
+}
+
+.advocacy-curriculum {
+    display: flex;
+}
+
+.advocacy-curriculum-box {
+    margin: 3% 2% 0 2%;
+    background-color: rgb(250, 219, 215);
+    padding: 0 2% 2% 2%;
+}

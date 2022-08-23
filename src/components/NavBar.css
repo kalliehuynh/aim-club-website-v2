@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+}
+
+.nav-link {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    border-left: 2px solid rgb(148, 159, 130);
+    border-top: 2px solid rgb(148, 159, 130);
+    border-bottom: 2px solid rgb(148, 159, 130);
+    padding: 18px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-link:hover, .nav-link:focus {
+    background-color: rgb(255, 216, 214);
+    font-weight: bold;  
+}
+
+#about {
+    border-left: 0;
+}

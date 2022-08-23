@@ -1,0 +1,10 @@
+.header-container {
+    background-color: rgb(148, 159, 130);
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.h1 {
+    border: none;
+}
