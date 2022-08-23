@@ -1,9 +1,9 @@
-import eventService from '.../services/EventServices'
+import EventServices from "../../services/EventServices";
 
 const Events = () => {
     const handleClick = () => {
         console.log('yay');
-        eventService
+        EventServices
             .getAll()
             .then(response => {
                 console.log('response.data', response.data)
