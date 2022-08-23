@@ -10,10 +10,13 @@
 
 .advocacy-curriculum {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .advocacy-curriculum-box {
     margin: 3% 2% 0 2%;
     background-color: rgb(250, 219, 215);
-    padding: 0 2% 2% 2%;
+    padding: 0 3% 3% 3%;
+    width: 18rem;
 }

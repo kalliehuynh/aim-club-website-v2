@@ -3,6 +3,7 @@ import http from 'http'
 import { Client } from '@notionhq/client'
 
 interface AimEvent {
+    name: string;
     date: object;
     location: string;
     desc: string;
@@ -32,6 +33,8 @@ const server = http.createServer(async (req, res) => {
             })
 
             const list: AimEvent[] = query.results.map((row) => {
+                // JSON processing due to bugs
+                const nameCell = JSON.parse(JSON.stringify(row.properties.Name)).title[0]
                 const dateCell = JSON.parse(JSON.stringify(row.properties.Date))
                 const locationCell = row.properties.location
                 const descCell = row.properties.description
@@ -39,20 +42,24 @@ const server = http.createServer(async (req, res) => {
                 // Depending on column "type" in Notion, there will be different data available 
                 // (URL vs date vs text). So for TypeScript to safely infer, we need to check
                 // "type" value.
+                // const isName = nameCell.type === 'text'
+                const isName = nameCell.type === 'text'
                 const isDate = dateCell.type === 'date'
                 const isLocation = locationCell.type === 'rich_text'
                 const isDesc = descCell.type === 'rich_text'
+                
 
-                if (isDate && isLocation && isDesc) {
+                if (isName && isDate && isLocation && isDesc) {
                     // Pull the string values of the cells off the column data
+                    const name = nameCell.plain_text
                     const date = dateCell.date
-                    const location = locationCell.rich_text?.[0].plain_text;
-                    const desc = descCell.rich_text?.[0].plain_text;
+                    const location = locationCell.rich_text?.[0].plain_text
+                    const desc = descCell.rich_text?.[0].plain_text
                     // Return it in our `ThingToLearn` shape
-                    return { date, location, desc };
+                    return { name, date, location, desc };
                 }
 
-                return { date: 'NOT_FOUND', location: '', desc: '' }
+                return { name: '', date: 'NOT_FOUND', location: '', desc: '' }
             })
 
             res.setHeader("Content-Type", "application/json");

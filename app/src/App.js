@@ -7,11 +7,32 @@ import Learn from "./components/pages/Learn";
 import Team from "./components/pages/Team";
 import Contact from "./components/pages/Contact";
 import './App.css'
+import EventInfo from "./components/pages/EventInfo";
+import { useState } from "react";
 
 
 const App = () => {
+  const [viewEvent, setViewEvent] = useState(null)
+
+  if (viewEvent) {
+    return (
+      <Router>
+        <div className="app-wrapper">
+          <Header />
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<About />}/>
+            <Route path='events' element={<Events />}/>
+            <Route path='learn' element={<Learn />}/>
+            <Route path='team' element={<Team />}/>
+            <Route path='contact' element={<Contact />}/>
+            <Route path='event-info' element={<EventInfo />}/>
+          </Routes>
+        </div>
+      </Router>  
+    )
+  }
   return (
-    
       <Router>
         <div className="app-wrapper">
           <Header />
