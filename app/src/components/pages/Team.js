@@ -1,16 +1,20 @@
-import DocumentTitle from "react-document-title";
+import DocumentTitle from "react-document-title"
+import './Team.css'
 
 const Person = ({person}) => {
-    const {name, pronouns, desc, contact, img, alt_text} = person;
+    const {name, pronouns, desc, contact, img, alt_text} = person
     const img_src = `${process.env.PUBLIC_URL}/assets/images/${img}`
     const mailto = `mailto:${contact}`
     return (
         <div className="person">
             <img src={img_src} alt={alt_text} className='person-image' />
-            <h3 className="person-name">{name}</h3>
-            <p className="person-pronouns">{pronouns}</p>
-            <p className="person-desc">{desc}</p>
-            <p className="person-contact">Contact: <a href={mailto} className="person-contact-email">{contact}</a></p>
+            <div className="person-bio-wrapper">
+                <h3 className="person-name">{name}</h3>
+                <p className="person-pronouns">{pronouns}</p>
+                <p className="person-desc">{desc}</p>
+                <p className="person-contact">Contact: <a href={mailto} className="person-contact-email">{contact}</a></p>    
+            </div>
+            
         </div>
         
             
@@ -31,8 +35,8 @@ const Team = () => {
 
     return (
         <DocumentTitle title="Team">
-            <div className="team">
-                <h1 className="team-header">Team</h1>
+            <div className="main team">
+                <h1 className="header">Team</h1>
                 <ul className="team-person-list">
                     {people.map(p => <Person person={p} />)}
                 </ul>   

@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import NavBar from "./components/NavBar";
+import Nav from "./components/Nav";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/pages/About";
 import Events from "./components/pages/Events";
@@ -19,14 +19,14 @@ const App = () => {
       <Router>
         <div className="app-wrapper">
           <Header />
-          <NavBar />
+          <Nav />
           <Routes>
             <Route path='/' element={<About />}/>
             <Route path='events' element={<Events />}/>
             <Route path='learn' element={<Learn />}/>
             <Route path='team' element={<Team />}/>
             <Route path='contact' element={<Contact />}/>
-            <Route path='event-info' element={<EventInfo />}/>
+            <Route path='event-info' element={<EventInfo event={viewEvent}/>}/>
           </Routes>
         </div>
       </Router>  
@@ -36,7 +36,7 @@ const App = () => {
       <Router>
         <div className="app-wrapper">
           <Header />
-          <NavBar />
+          <Nav />
           <Routes>
             <Route path='/' element={<About />}/>
             <Route path='events' element={<Events />}/>

@@ -2,14 +2,13 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  min-width: 400px;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(134, 115, 69);
   background-color: rgb(218, 189, 135);
+  top: 0;
 }
 
 .app-wrapper {
@@ -17,11 +16,26 @@ body {
   display: flex;
   flex-direction: column;
   width: 60vw;
-  min-width: 400px;
+  min-width: 350px;
   height: fit-content;
   min-height: 95vh;
   margin: 0;
   border: 3px solid rgb(134, 115, 69);
   border-radius: 10px;
   overflow: hidden;
+}
+
+a {
+  color: inherit;
+  font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+    .app-wrapper {
+      width: 100vw;
+      border: none;
+      border-radius: 0;
+    }
+  
+
 }

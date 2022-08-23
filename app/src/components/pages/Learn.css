@@ -1,0 +1,20 @@
+.resource-wrapper {
+    background-color: rgb(250, 219, 215);
+    margin: 2% 3% 2% 3%;
+    padding: 1.5% 2% 1% 2%;
+    border-radius: 4px;
+}
+
+.learn-content-text {
+    border-bottom: 2px dashed rgb(148, 159, 130);
+}
+
+.resource-item {
+    list-style: none;
+}
+
+.resource-link {
+    color: inherit;
+    font-weight: bold;
+    font-size: larger;
+}

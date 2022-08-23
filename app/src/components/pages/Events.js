@@ -36,7 +36,7 @@ const UpcomingEvent = ({ event }) => {
     if (startDate === endDate) {
         return (
             <li>
-                <div className="event-item" key={name} tabIndex={0}>
+                <div className="event-item" key={name}>
                     <h3 className="event-item-name">{name}</h3>
                     <div className="event-item-datetime">
                         <p>{convertDate(startDate)}</p>

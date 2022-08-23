@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
-import './NavBar.css'
+import useWindowDimensions from "../hooks/useWindowDimensions"
+import Dropdown from "./Dropdown"
+import './Nav.css'
+
 
 const NavBar = () => {
     return (
@@ -13,4 +16,12 @@ const NavBar = () => {
     )
 }
 
-export default NavBar
+const Nav = () => {
+    const { height, width } = useWindowDimensions()
+    if (width <= 700) {
+        return <Dropdown />
+    }
+    return <NavBar />
+}
+
+export default Nav

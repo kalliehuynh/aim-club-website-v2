@@ -33,6 +33,7 @@
         border-radius: 2rem;
         border: 1px solid rgb(129, 129, 129);
         font-weight: bold;
+        text-decoration: none;
     }
 
     .event-item-btn:hover, .event-item-btn:focus {

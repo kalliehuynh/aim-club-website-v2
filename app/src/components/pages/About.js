@@ -1,5 +1,6 @@
 import './About.css'
 import DocumentTitle from 'react-document-title'
+import { useEffect } from 'react'
 
 const About = () => {
     return (
@@ -17,7 +18,7 @@ const About = () => {
                 <div className="advocacy-curriculum">
                     <div className="advocacy-curriculum-box">
                         <h2 className='header'>Advocacy</h2>
-                        <p>We advocate for:</p>
+                        <p>We are advocating for:</p>
                         <ul className="advocacy-list">
                             <li className="advocacy-list-item">A more accessible medical school application and medical school education</li>
                             <li className="advocacy-list-item">An accessibility policy within MSA and FoMD club/initiative events</li>
@@ -25,7 +26,7 @@ const About = () => {
                     </div>
                     <div className="advocacy-curriculum-box">
                         <h2 className='header'>Curriculum</h2>
-                        <p>Work to increase disability-affirming curriculum in the pre-clerkship medical education. </p>
+                        <p>We are working to increase disability-affirming curriculum in the pre-clerkship medical education. </p>
                     </div>
                 </div>
             </div>
