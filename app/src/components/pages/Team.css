@@ -1,20 +1,20 @@
 .person {
+    list-style: none;
     background-color: rgb(250, 219, 215);
-    margin: 0;
-    width: 70%;
-    min-width: fit-content;
-    padding: 2% 2% 2% 2%;
-    display: flex;
-    flex-wrap: wrap;
+    padding: 3% 4%;
 }
 
 .team-person-list {
-    padding: 0;
-    width: 100%;
+    background-color: rgb(250, 219, 215);
+    margin: 0;
+    margin-top: 25px;
+    width: 80%;
+    min-width: 290px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    min-width: 450px;
+    padding: 0;
 }
 
 .person-image {
@@ -26,10 +26,13 @@
 }
 
 .person-bio-wrapper {
-    margin-left: 6%;
     flex: 1 1 50%;
-    min-width:  400px;
-    background-color: lavender;
+    padding: 2% 6%;
 }
 
+.team-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 

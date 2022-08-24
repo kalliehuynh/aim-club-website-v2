@@ -21,7 +21,7 @@ const notion = new Client({
 })
 
 const HOST = 'localhost'
-const PORT = 3001
+const PORT = 8000
 
 const server = http.createServer(async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*')

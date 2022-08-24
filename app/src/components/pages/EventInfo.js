@@ -1,8 +1,13 @@
-const EventInfo = ({ name, startDate, endDate, startTime, endTime, location, desc }) => {
+import './EventInfo.css'
+
+const EventInfo = ({ eventName, startDate, endDate, startTime, endTime, location, desc, setViewingEvent }) => {
+    const handleClick = () => {
+        setViewingEvent(null)
+    }
     if (startDate === endDate) {
         return (
             <div className="main">
-                <h1>{name}</h1>
+                <h1>{eventName}</h1>
                 <table>
                     <tbody>
                         <tr>
@@ -13,18 +18,16 @@ const EventInfo = ({ name, startDate, endDate, startTime, endTime, location, des
                             <td>Location</td>
                             <td>{location}</td>
                         </tr>
-                        <tr>
-                            <td>Info:</td>
-                            <td>{desc}</td>
-                        </tr>
                     </tbody>
                 </table>
+                <p>{desc}</p>
+                <button onClick={handleClick}>Return to all events</button>
             </div>
         )    
     }
     return (
         <div className="main">
-            <h1>{name}</h1>
+            <h1>{eventName}</h1>
             <table>
                 <tbody>
                     <tr>
@@ -35,12 +38,10 @@ const EventInfo = ({ name, startDate, endDate, startTime, endTime, location, des
                         <td>Location</td>
                         <td>{location}</td>
                     </tr>
-                    <tr>
-                        <td>Info:</td>
-                        <td>{desc}</td>
-                    </tr>
                 </tbody>
             </table>
+            <p>{desc}</p>
+            <button onClick={handleClick}>Return to all events</button>
         </div>
     )    
 }

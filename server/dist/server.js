@@ -24,7 +24,7 @@ const notion = new client_1.Client({
     auth: notionSecret,
 });
 const HOST = 'localhost';
-const PORT = 3001;
+const PORT = 8000;
 const server = http_1.default.createServer((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
@@ -36,7 +36,6 @@ const server = http_1.default.createServer((req, res) => __awaiter(void 0, void 
             const list = query.results.map((row) => {
                 var _a, _b;
                 // JSON processing due to bugs
-                console.log('row.properties', row.properties);
                 const nameCell = JSON.parse(JSON.stringify(row.properties.Name)).title[0];
                 const dateCell = JSON.parse(JSON.stringify(row.properties.Date));
                 const locationCell = row.properties.location;

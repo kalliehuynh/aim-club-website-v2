@@ -9,7 +9,7 @@ div.container {
     margin: 0;
 }
   
-button {
+button#nav-button {
     border: 0;
     width: 100%;
     padding: 15px 18px;
@@ -32,11 +32,11 @@ button:hover {
     cursor: pointer;
 }
 
-button::after {
+button#nav-button::after {
     content: "\2191";
 }
 
-button.expanded::after {
+button#nav-button.expanded::after {
     content: "\2193";
 }
 

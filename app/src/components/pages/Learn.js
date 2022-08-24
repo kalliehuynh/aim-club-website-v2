@@ -22,12 +22,6 @@ const Learn = () => {
             'link': 'https://www.autistichoya.com/p/ableist-words-and-terms-to-avoid.html',
             'desc': 'Ableist language is engrained in our everyday lives. Autistic Hoya (Lydia X.Y. Brown)’s blogpost is useful for learning about everyday ableist language.',
             'id': 1
-        },
-        {
-            'title': "Autistic Hoya's Ableist Language Blogpost",
-            'link': 'https://www.autistichoya.com/p/ableist-words-and-terms-to-avoid.html',
-            'desc': 'Ableist language is engrained in our everyday lives. Autistic Hoya (Lydia X.Y. Brown)’s blogpost is useful for learning about everyday ableist language.',
-            'id': 1
         }
     ]
     return (

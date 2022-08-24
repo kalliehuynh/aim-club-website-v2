@@ -1,43 +1,66 @@
-    .event-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: rgb(250, 219, 215);
-        margin-bottom: 5%;
-        padding: 1% 5% 1% 5%;
-        border-radius: 5px;
-    }
+.event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(250, 219, 215);
+    margin-bottom: 5%;
+    padding: 1% 5% 1% 5%;
+    border-radius: 5px;
+    min-width: 200px;
+    overflow: hidden;
+}
 
-    .upcoming-events {
-        display: flex;
+.upcoming-events {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.upcoming-events-list {
+    padding: 0;
+    list-style: none;
+
+}
+
+.event-item-name {
+    text-overflow: ellipsis;
+    margin-right: 20px;
+}
+
+.event-item-btn {
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1% 2%;
+    background-color: white;
+    border-radius: 2rem;
+    border: 1px solid rgb(129, 129, 129);
+    text-decoration: none;
+    font-weight: 100;
+
+}
+
+.event-item-btn:hover, .event-item-btn:focus {
+    transform: scale(1.07);
+    background-color: rgb(217, 217, 217);
+    color: rgb(94, 78, 40);
+}
+
+.event-item-name, .event-item-datetime {
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 1000px) {
+    .event-item{
         flex-direction: column;
-        
     }
 
-    .upcoming-events-list {
-        padding: 0;
-        list-style: none;
+    .event-item-datetime {
+        display: none;
     }
 
     .event-item-name {
-        text-overflow: clip;
-        max-width: 45%;
+        width: 100%;
     }
 
-    .event-item-btn {
-        font-size: 0.9rem;
-        font-family: inherit;
-        color: inherit;
-        padding: 1% 2% 1% 2%;
-        background-color: white;
-        border-radius: 2rem;
-        border: 1px solid rgb(129, 129, 129);
-        font-weight: bold;
-        text-decoration: none;
-    }
-
-    .event-item-btn:hover, .event-item-btn:focus {
-        transform: scale(1.07);
-        background-color: rgb(217, 217, 217);
-        color: rgb(94, 78, 40);
-    }
+}

@@ -3,10 +3,10 @@ import './Team.css'
 
 const Person = ({person}) => {
     const {name, pronouns, desc, contact, img, alt_text} = person
-    const img_src = `${process.env.PUBLIC_URL}/assets/images/${img}`
+    const img_src = `${process.env.PUBLIC_URL}/images/${img}`
     const mailto = `mailto:${contact}`
     return (
-        <div className="person">
+        <li key={name} className="person">
             <img src={img_src} alt={alt_text} className='person-image' />
             <div className="person-bio-wrapper">
                 <h3 className="person-name">{name}</h3>
@@ -14,8 +14,8 @@ const Person = ({person}) => {
                 <p className="person-desc">{desc}</p>
                 <p className="person-contact">Contact: <a href={mailto} className="person-contact-email">{contact}</a></p>    
             </div>
-            
-        </div>
+        </li>
+        
         
             
     )
@@ -37,9 +37,12 @@ const Team = () => {
         <DocumentTitle title="Team">
             <div className="main team">
                 <h1 className="header">Team</h1>
-                <ul className="team-person-list">
-                    {people.map(p => <Person person={p} />)}
-                </ul>   
+                <div className="team-content-wrapper">
+                    <ul className="team-person-list">
+                        {people.map(p => <Person person={p} />)}
+                    </ul>       
+                </div>
+                
             </div>
         </DocumentTitle>
     )
