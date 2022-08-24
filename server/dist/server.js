@@ -24,7 +24,7 @@ const notion = new client_1.Client({
     auth: notionSecret,
 });
 const HOST = 'localhost';
-const PORT = 8000;
+const PORT = 3001;
 const server = http_1.default.createServer((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
@@ -36,14 +36,15 @@ const server = http_1.default.createServer((req, res) => __awaiter(void 0, void 
             const list = query.results.map((row) => {
                 var _a, _b;
                 // JSON processing due to bugs
-                const nameCell = JSON.parse(JSON.stringify(row.properties.Name)).title[0];
-                const dateCell = JSON.parse(JSON.stringify(row.properties.Date));
-                const locationCell = row.properties.location;
-                const descCell = row.properties.description;
+                console.log('row', row);
+                const rowProps = JSON.parse(JSON.stringify(row)).properties;
+                const nameCell = JSON.parse(JSON.stringify(rowProps.Name)).title[0];
+                const dateCell = JSON.parse(JSON.stringify(rowProps.Date));
+                const locationCell = rowProps.location;
+                const descCell = rowProps.description;
                 // Depending on column "type" in Notion, there will be different data available 
                 // (URL vs date vs text). So for TypeScript to safely infer, we need to check
                 // "type" value.
-                // const isName = nameCell.type === 'text'
                 const isName = nameCell.type === 'text';
                 const isDate = dateCell.type === 'date';
                 const isLocation = locationCell.type === 'rich_text';
@@ -57,7 +58,7 @@ const server = http_1.default.createServer((req, res) => __awaiter(void 0, void 
                     // Return it in our `ThingToLearn` shape
                     return { name, date, location, desc };
                 }
-                return { name: '', date: 'NOT_FOUND', location: '', desc: '' };
+                return { name: 'NOT_FOUND', date: {}, location: '', desc: '' };
             });
             res.setHeader("Content-Type", "application/json");
             res.writeHead(200);
