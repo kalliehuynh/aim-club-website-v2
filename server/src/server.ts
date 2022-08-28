@@ -31,7 +31,6 @@ const server = http.createServer(async (req, res) => {
             const query = await notion.databases.query({
                 database_id: notionDatabaseID,
             })
-
             const list: AimEvent[] = query.results.map((row) => {
                 // JSON processing due to bugs
                 console.log('row', row)
