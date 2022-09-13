@@ -1,0 +1,16 @@
+.banner {
+    background-color: rgb(255, 255, 255);
+    color:rgb(134, 115, 69);
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+.banner-link {
+    display: flex;
+    width: 100vw;
+    text-decoration: none;
+    justify-content: center;
+    font-weight: 300;
+    padding: 0.3rem 0;
+}

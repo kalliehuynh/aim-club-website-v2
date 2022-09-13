@@ -9,9 +9,9 @@ const Dropdown = () => {
     const optionsList = [
         "Home",
         "Events",
-        "Learn",
         "Team",
-        "Contact"
+        "Contact",
+        "Learn",
     ]
 
     const toggleOptions = () => {
@@ -51,7 +51,7 @@ const Dropdown = () => {
         case "ArrowDown":
             e.preventDefault()
             setSelectedOption(
-                selectedOption == optionsList.length - 1 ? 0 : selectedOption + 1
+                selectedOption === optionsList.length - 1 ? 0 : selectedOption + 1
             )
             break
         default:
@@ -86,7 +86,7 @@ const Dropdown = () => {
                     <li
                     id={option}
                     role="option"
-                    aria-selected={selectedOption == index}
+                    aria-selected={selectedOption === index}
                     tabIndex={0}
                     onKeyDown={handleKeyDown(index)}
                     onClick={() => {

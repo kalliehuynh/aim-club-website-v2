@@ -1,5 +1,3 @@
-import EventServices from "../../services/EventServices";
-import EventInfo from "./EventInfo";
 import { useEffect, useState } from 'react'
 import './Events.css'
 import DocumentTitle from 'react-document-title'
@@ -22,17 +20,15 @@ const convertTimeString = (timeString) => {
     return timeString.join (''); // return adjusted timeString or original string
 }
 
-const UpcomingEvent = ({ event, viewingEvent, setViewingEvent }) => {
-    const { name, date, location, desc } = event
+const UpcomingEvent = ({ event }) => {
+    const { name, date, location, signup } = event
     const eventName = name
     const startDate = date.start.slice(0, 10)
     const endDate = date.end.slice(0, 10)
     const startTime = date.start.slice(11, 16)
     const endTime = date.end.slice(11, 16)
     
-    const handleClick = (e) => {
-        setViewingEvent(event)
-    }
+    console.log('signup', signup)
     if (startDate === endDate) {
         return (
             <li className="event-item" key={eventName}>
@@ -40,7 +36,7 @@ const UpcomingEvent = ({ event, viewingEvent, setViewingEvent }) => {
                     <h3 className="event-item-name">{eventName}</h3>
                     <p className="event-item-datetime">{convertDate(startDate)}, {convertTimeString(startTime)} - {convertTimeString(endTime)}</p>
                 </div>
-                <button onClick={handleClick} className="event-item-btn">View Details</button>
+                <a href={signup} target="_blank" rel="noopener noreferrer" className="event-item-btn">View Details</a>
             </li>
                 
         )
@@ -51,16 +47,15 @@ const UpcomingEvent = ({ event, viewingEvent, setViewingEvent }) => {
                 <h3 className="event-item-name">{eventName}</h3>
                 <p className="event-item-datetime">{convertDate(startDate)} to {convertDate(endDate)}</p>
             </div>
-            <button onClick={handleClick} className="event-item-btn">View Details</button>
+            <a href={signup} target="_blank" rel="noopener noreferrer" className="event-item-btn">View Details</a>
         </li>
             
     )
-
 }
 
 const Events = () => {
-    const [viewingEvent, setViewingEvent] = useState(null)
     const [events, setEvents] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
 
     const isUpcoming = (startDate) => {
         const day = parseInt(startDate.slice(0, 10).replace('-', '').replace('-', ''))
@@ -71,68 +66,43 @@ const Events = () => {
     }
 
     useEffect(() => {
-        EventServices
-            .getAll()
+        fetch("/api")
             .then(response => {
+                response = response.json()
                 const upcoming = response.data.filter(event => isUpcoming(event.date.start))
                 setEvents(upcoming)
+                setIsLoaded(true)
             })
     }, [])
 
-    if (events.length === 0) {
-        return (
-            <DocumentTitle title='Events'>
-            <div className="upcoming-events main" >
-                <h1 className="header">Upcoming Events</h1>
-                <p>We are still planning events... check back later!</p>
-                
-            </div>
-        </DocumentTitle>
-        )
-    }
-    if (viewingEvent) {
-        const { name, date, location, desc } = viewingEvent
-        const eventName = name
-        const startDate = date.start.slice(0, 10)
-        const endDate = date.end.slice(0, 10)
-        const startTime = date.start.slice(11, 16)
-        const endTime = date.end.slice(11, 16)
-        
-        return (
-            <DocumentTitle title={`AIM events - ${eventName}`}>
-                <div className="upcoming-events main" >
-                    <h1 className="header">Upcoming Events</h1>
-                    <EventInfo
-                        eventName={eventName}
-                        startDate={convertDate(startDate)}
-                        endDate={convertDate(endDate)}
-                        startTime={convertTimeString(startTime)}
-                        endTime={convertTimeString(endTime)}
-                        location={location}
-                        desc={desc}
-                        setViewingEvent={setViewingEvent}
-                    />
-                    
-                </div>
-            </DocumentTitle>
-            
-        )
-    }
-    console.log('events', events)
     return (
         <DocumentTitle title='Events'>
             <div className="upcoming-events main" >
                 <h1 className="header">Upcoming Events</h1>
-                <ul className="upcoming-events-list">
-                    {events.map(e => 
-                        <UpcomingEvent event={e} setViewingEvent={setViewingEvent} />
-                    )}
-                </ul>
-                
+                <EventsContent isLoaded={isLoaded} events={events} />
             </div>
         </DocumentTitle>
-        
     )
+}
+
+const EventsContent = ({ isLoaded, events }) => {
+
+    if (!isLoaded) {
+        return <p>Loading...</p>
+    }
+
+    if (events.length === 0 && isLoaded) {
+        return <p>We are currently planning events... sign up to the mailing list to get notified!</p>
+    }
+
+    return (
+        <ul className="upcoming-events-list">
+            {events.map(e => 
+                <UpcomingEvent event={e} />
+            )}
+        </ul>
+    )
+
 }
 
 export default Events

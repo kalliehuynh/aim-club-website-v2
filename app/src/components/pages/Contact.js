@@ -6,9 +6,7 @@ const Contact = () => {
             <div className="main">
                 <h1 className="header">Contact</h1>
                 <div className="contact-content">
-                    <p>For Accessibility Inquiries/Feedback/Edit suggestions: Please contact An Nguyen at <a href="mailto:huean@ualberta.ca">huean@ualberta.ca</a>.</p>
-                    <p>To Collaborate with AIM please contact:_______________</p>
-                    <p>For General Inquiries please contact:_______________</p> 
+                    <p>To collaborate with AIM, general inquiries, and accessibility suggestions: Please contact <a href="mailto:aimualberta@gmail.com">aimualberta@gmail.com</a>.</p>
                 </div>
             </div>    
         </DocumentTitle>

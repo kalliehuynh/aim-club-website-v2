@@ -18,6 +18,49 @@
     margin: 3% 2% 0 2%;
     background-color: rgb(250, 219, 215);
     padding: 0 3% 3% 3%;
-    width: 18rem;
+    width: 15rem;
     border-radius: 5px;
+}
+
+.advocacy-curriculum-box li {
+    margin-bottom: 0.7rem;
+}
+
+.about-desc {
+    margin-bottom: 2rem;
+}
+
+.old-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.old-logo-img {
+    width: 80%;
+}
+
+.mailing-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.signup-link {
+    text-decoration: none;
+}
+
+.mailing-list h3 {
+    background-color: rgb(250, 219, 215);
+    padding: 2% 4%;
+    border-radius: 1.5rem;
+    border: 2px outset rgb(250, 219, 215);
+}
+
+.mailing-list h3:hover {
+    transform: scale(1.02);
+    background-color: rgb(255, 242, 241);
 }
