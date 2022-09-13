@@ -69,7 +69,7 @@ const Events = () => {
         fetch("https://lively-sopapillas-a28532.netlify.app/")
             .then(response => {
                 response = response.json()
-                console.log('response', response)
+                console.log('response', response.result)
                 // const upcoming = response.data.filter(event => isUpcoming(event.date.start))
                 // setEvents(upcoming)
                 // setIsLoaded(true)
