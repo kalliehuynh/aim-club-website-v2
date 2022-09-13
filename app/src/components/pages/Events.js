@@ -66,12 +66,13 @@ const Events = () => {
     }
 
     useEffect(() => {
-        fetch("https://lively-sopapillas-a28532.netlify.app")
+        fetch("https://lively-sopapillas-a28532.netlify.app/")
             .then(response => {
                 response = response.json()
-                const upcoming = response.data.filter(event => isUpcoming(event.date.start))
-                setEvents(upcoming)
-                setIsLoaded(true)
+                console.log('response', response)
+                // const upcoming = response.data.filter(event => isUpcoming(event.date.start))
+                // setEvents(upcoming)
+                // setIsLoaded(true)
             })
     }, [])
 
