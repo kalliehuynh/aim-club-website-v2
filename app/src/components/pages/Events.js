@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './Events.css'
 import DocumentTitle from 'react-document-title'
+import 'axios'
+import axios from 'axios'
 
 const convertDate = (dateString) => {
     const months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -66,16 +68,13 @@ const Events = () => {
     }
 
     useEffect(() => {
-        fetch("https://lively-sopapillas-a28532.netlify.app/")
-            .then(response => {
-                response = response.json()
-                console.log('response', response)
-                console.log('responsearray', response.array)
-                console.log('response.type', response.type)
-                // const upcoming = response.data.filter(event => isUpcoming(event.date.start))
-                // setEvents(upcoming)
-                // setIsLoaded(true)
-            })
+        axios.get("https://lively-sopapillas-a28532.netlify.app/")
+        .then(response => {
+            console.log('response.data', response.data)
+            const upcomingEvents = response.data.filter((e) => isUpcoming(e.date.start))
+            setEvents(upcomingEvents)
+            setIsLoaded(true)
+        })
     }, [])
 
     return (
