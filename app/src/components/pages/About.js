@@ -24,7 +24,7 @@ const About = () => {
                 <h1 className='header' tabIndex={0}>Initiatives</h1>
                 <div className="about-desc">
                     <ul>
-                        <li>Sitting on theå <strong>Social Accountability Council (SAC)</strong> at the University of Alberta Faculty of Medicine and Dentistry (FoMD) advocating for the disability community.</li>
+                        <li>Sitting on the <strong>Social Accountability Council (SAC)</strong> at the University of Alberta Faculty of Medicine and Dentistry (FoMD) advocating for the disability community.</li>
                         <li>Sitting on the <strong>Medical Students’ Association (MSA)  Equity, Diversity, and Inclusion (EDI) Committee</strong> advocating for the disability community.</li>
                         <li>Working with the Canadian Association of Physicians with Disabilities and pre-clerkship faculty to address the lack of disability curriculum in pre-clerkship.</li>
                         <li>Planning various events for medical students to learn from those experiencing disability.</li>
