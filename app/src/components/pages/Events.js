@@ -23,15 +23,18 @@ const convertTimeString = (timeString) => {
 }
 
 const UpcomingEvent = ({ event }) => {
-    const { name, date, location, signup } = event
+    const { name, date, signup } = event
     const eventName = name
     const startDate = date.start.slice(0, 10)
-    const endDate = date.end.slice(0, 10)
+    const endDate = null
+    if (event.date.end) {
+        endDate = date.end.slice(0, 10)
+    }
     const startTime = date.start.slice(11, 16)
     const endTime = date.end.slice(11, 16)
     
     console.log('signup', signup)
-    if (startDate === endDate) {
+    if (endDate === null) {
         return (
             <li className="event-item" key={eventName}>
                 <div className="event-name-date-wrapper">
@@ -40,7 +43,6 @@ const UpcomingEvent = ({ event }) => {
                 </div>
                 <a href={signup} target="_blank" rel="noopener noreferrer" className="event-item-btn">View Details</a>
             </li>
-                
         )
     }
     return (
@@ -70,7 +72,6 @@ const Events = () => {
     useEffect(() => {
         axios.get("https://lively-sopapillas-a28532.netlify.app/")
         .then(response => {
-            console.log('response.data', response.data)
             const upcomingEvents = response.data.filter((e) => isUpcoming(e.date.start))
             setEvents(upcomingEvents)
             setIsLoaded(true)
