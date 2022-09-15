@@ -10,41 +10,40 @@ const convertDate = (dateString) => {
     return `${months[dateArray[1]]} ${dateArray[2]}, ${dateArray[0]}`
 }
 
-const convertTimeString = (timeString) => {
-    // Check correct timeString format and split into components
-    timeString = timeString.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [timeString];
+// const convertTimeString = (timeString) => {
+//     // Check correct timeString format and split into components
+//     timeString = timeString.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [timeString];
 
-    if (timeString.length > 1) { // If timeString format correct
-        timeString = timeString.slice (1);  // Remove full string match value
-        timeString[5] = +timeString[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
-        timeString[0] = +timeString[0] % 12 || 12; // Adjust hours
-    }
-    return timeString.join (''); // return adjusted timeString or original string
-}
+//     if (timeString.length > 1) { // If timeString format correct
+//         timeString = timeString.slice (1);  // Remove full string match value
+//         timeString[5] = +timeString[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+//         timeString[0] = +timeString[0] % 12 || 12; // Adjust hours
+//     }
+//     return timeString.join (''); // return adjusted timeString or original string
+// }
 
-const UpcomingEvent = ({ event }) => {
+const UpcomingEvent = ({ event, key }) => {
     const { name, date, signup } = event
     const eventName = name
     const startDate = date.start.slice(0, 10)
-    const endDate = null
-    if (event.date.end) {
+    let endDate = null
+
+    if (date.end) {
         endDate = date.end.slice(0, 10)
     }
-    const startTime = date.start.slice(11, 16)
-    const endTime = date.end.slice(11, 16)
-    
-    console.log('signup', signup)
-    if (endDate === null) {
+
+    if (endDate == null) {
         return (
             <li className="event-item" key={eventName}>
                 <div className="event-name-date-wrapper">
                     <h3 className="event-item-name">{eventName}</h3>
-                    <p className="event-item-datetime">{convertDate(startDate)}, {convertTimeString(startTime)} - {convertTimeString(endTime)}</p>
+                    <p className="event-item-datetime">{convertDate(startDate)}</p>
                 </div>
                 <a href={signup} target="_blank" rel="noopener noreferrer" className="event-item-btn">View Details</a>
             </li>
         )
     }
+
     return (
         <li className="event-item" key={eventName}>
             <div className="event-name-date-wrapper">
@@ -101,7 +100,7 @@ const EventsContent = ({ isLoaded, events }) => {
     return (
         <ul className="upcoming-events-list">
             {events.map(e => 
-                <UpcomingEvent event={e} />
+                <UpcomingEvent event={e} key={e.name} />
             )}
         </ul>
     )

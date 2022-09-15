@@ -17,7 +17,7 @@ const NavBar = () => {
 }
 
 const Nav = () => {
-    const { height, width } = useWindowDimensions()
+    const { width } = useWindowDimensions()
     if (width <= 700) {
         return <Dropdown />
     }

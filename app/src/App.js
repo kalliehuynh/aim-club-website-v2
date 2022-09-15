@@ -7,7 +7,6 @@ import Learn from "./components/pages/Learn";
 import Team from "./components/pages/Team";
 import Contact from "./components/pages/Contact";
 import './App.css'
-import { useState } from "react";
 import Banner from "./components/Banner";
 
 
