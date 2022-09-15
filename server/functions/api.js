@@ -28,23 +28,20 @@ router.get('/', cors(), async (req, res) => {
         const rowProps = JSON.parse(JSON.stringify(row)).properties
         const nameCell = JSON.parse(JSON.stringify(rowProps.Name)).title[0]
         const dateCell = JSON.parse(JSON.stringify(rowProps.Date))
-        const locationCell = rowProps.location
         const signupCell = rowProps.signup
 
         const isName = nameCell.type === 'text'
         const isDate = dateCell.type === 'date'
-        const isLocation = locationCell.type === 'rich_text'
         const isSignUp = signupCell.type === 'url'
 
         if (isName && isDate && isLocation && isSignUp) {
             // Pull the string values of the cells off the column data
             const name = nameCell.plain_text
             const date = dateCell.date
-            const location = locationCell.rich_text?.[0].plain_text
             const signup = signupCell.url ?? ''
-            return { name, date, location, signup }
+            return { name, date, signup }
         }
-        return { name: 'NOT_FOUND', date: {}, location: '', signup: '' }
+        return { name: 'NOT_FOUND', date: {}, signup: '' }
     })
     res.json(list)
 })
