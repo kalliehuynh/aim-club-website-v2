@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const router = express.Router()
+app.use(cors())
 
 // load notion database
 require('dotenv').config()
@@ -49,7 +50,6 @@ router.get('/', cors(), async (req, res) => {
 })
 
 app.use('/', router)
-app.use(cors())
 
 module.exports.handler = serverless(app)
 
