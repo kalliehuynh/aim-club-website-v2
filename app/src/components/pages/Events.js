@@ -56,6 +56,39 @@ const UpcomingEvent = ({ event, key }) => {
     )
 }
 
+const PastPosters = () => {
+    const pastPosters = [
+        {
+            'src': `/past_posters/medical_specialties.png`,
+            'alt': "'Medical Specialties Serving Patients Experiencing Disability: A Career Panel' poster"
+        },
+        {
+            'src': `/past_posters/disability_affirming_healthcare.png`, 
+            'alt': "'Moving Towards Disability-Affirming Healthcare Systems: Let's Talk Ableism' poster"
+        },
+        {
+            'src': `/past_posters/sex_and_disability.png`,
+            'alt': "'Talking Sex and Disability with Andrew Gurza' poster"
+        },
+
+        {
+            'src': `/past_posters/stories_from_disability.png`,
+            'alt': "'Stories from Disability Knowledge Holders: Heather Kuttai' poster"
+        }
+    ]
+    return (
+        <div className="past-posters">
+            <h1 className="header">Past Posters</h1>
+            <div className="past-posters-wrapper">
+                {pastPosters.map(poster => {
+                    const { src, alt } = poster
+                    return <img src={src} alt={alt} className='past-poster'/>
+                })}
+            </div>
+        </div>
+    )
+}
+
 const Events = () => {
     const [events, setEvents] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
@@ -82,6 +115,7 @@ const Events = () => {
             <div className="upcoming-events main" >
                 <h1 className="header">Upcoming Events</h1>
                 <EventsContent isLoaded={isLoaded} events={events} />
+                <PastPosters />
             </div>
         </DocumentTitle>
     )
