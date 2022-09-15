@@ -45,7 +45,7 @@
 
 .event-item-btn:hover, .event-item-btn:focus {
     transform: scale(1.07);
-    background-color: rgb(217, 217, 217);
+    background-color: rgb(255, 242, 241);
     color: rgb(94, 78, 40);
 }
 
