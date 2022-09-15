@@ -34,7 +34,7 @@ router.get('/', cors(), async (req, res) => {
         const isDate = dateCell.type === 'date'
         const isSignUp = signupCell.type === 'url'
 
-        if (isName && isDate && isLocation && isSignUp) {
+        if (isName && isDate && isSignUp) {
             // Pull the string values of the cells off the column data
             const name = nameCell.plain_text
             const date = dateCell.date
