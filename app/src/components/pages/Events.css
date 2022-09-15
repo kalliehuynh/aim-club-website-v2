@@ -31,14 +31,16 @@
     font-size: 0.9rem;
     font-family: inherit;
     color: inherit;
-    padding: 1% 2%;
+    padding: 0.6rem 0.7rem;
     background-color: white;
     border-radius: 2rem;
     text-decoration: none;
     font-weight: 100;
     margin: 0 0 2%;
     text-align: center;
-
+    width: 6rem;
+    min-width: 6rem;
+    border: 2px outset rgb(250, 219, 215);
 }
 
 .event-item-btn:hover, .event-item-btn:focus {
